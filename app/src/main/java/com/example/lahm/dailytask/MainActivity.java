@@ -10,7 +10,7 @@ import com.example.lahm.dailytask.File.FileActivity;
 import com.example.lahm.dailytask.Reflection.ReflectionActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button thread_btn, file_btn, reflection_btn, replace_btn;
+    private Button thread_btn, file_btn, reflection_btn, replace_btn, search_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         file_btn = (Button) findViewById(R.id.file_btn);
         reflection_btn = (Button) findViewById(R.id.reflection_btn);
         replace_btn = (Button) findViewById(R.id.replace_btn);
+        search_btn = (Button) findViewById(R.id.search_btn);
     }
 
     private void initListener() {
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         file_btn.setOnClickListener(this);
         reflection_btn.setOnClickListener(this);
         replace_btn.setOnClickListener(this);
+        search_btn.setOnClickListener(this);
     }
 
     @Override
@@ -48,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.replace_btn:
                 startActivity(new Intent(this, ReplaceActivity.class));
+                break;
+            case R.id.search_btn:
+                startActivity(new Intent(this, SearchActivity.class));
                 break;
             default:
                 break;

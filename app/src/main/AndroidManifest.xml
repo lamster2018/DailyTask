@@ -23,6 +23,7 @@
         <activity android:name=".File.FileActivity" />
         <activity android:name=".Reflection.ReflectionActivity" />
         <activity android:name=".ReplaceActivity" />
+        <activity android:name=".SearchActivity" />
     </application>
 
 </manifest>

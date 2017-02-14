@@ -4,8 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.lahm.myapplication.MainActivity">
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/thread_btn"
@@ -31,4 +30,9 @@
         android:layout_height="60dp"
         android:text="replace" />
 
+    <Button
+        android:id="@+id/search_btn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="search" />
 </LinearLayout>
