@@ -1,5 +1,6 @@
 package com.example.lahm.dailytask;
 
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -27,8 +28,13 @@ public class ScreenActivity extends AppCompatActivity {
         sb.append("dpi").append(String.valueOf(densityDpi)).append("\n");
         float density = dm.density;
         sb.append("density--").append(String.valueOf(density)).append("\n");
+
+        float density2 = Resources.getSystem().getDisplayMetrics().density;//get resource without context
+        sb.append("density2--").append(String.valueOf(density2)).append("\n");
         float scaledDensity = dm.scaledDensity;
         sb.append("scaledDensity").append(String.valueOf(scaledDensity)).append("\n");
+
+
         return sb;
     }
 
@@ -42,15 +48,15 @@ public class ScreenActivity extends AppCompatActivity {
 //        new Thread(t).start();
 //        new Thread(t).start();
 
-//        new Thread(ticketSynchronized).start();
-//        new Thread(ticketSynchronized).start();
-//        new Thread(ticketSynchronized).start();
+        new Thread(ticketSynchronized).start();
+        new Thread(ticketSynchronized).start();
+        new Thread(ticketSynchronized).start();
 
-        Cus cus = new Cus();//银行问题
-        Thread t1 = new Thread(cus);
-        Thread t2 = new Thread(cus);
-        t1.start();
-        t2.start();
+//        Cus cus = new Cus();//银行问题
+//        Thread t1 = new Thread(cus);
+//        Thread t2 = new Thread(cus);
+//        t1.start();
+//        t2.start();
 
 //        CusSync cus = new CusSync();
 //        Thread t1 = new Thread(cus);
@@ -82,20 +88,20 @@ public class ScreenActivity extends AppCompatActivity {
         private Bank bank = new Bank();
 
         private int tick = 20;
-        Object obj = new Object();
+//        Object obj = new Object();
 
-        public void run() {
+        public synchronized void run() {
             while (true) {
-                synchronized (obj) {
-                    if (tick > 0) {
-                        try {
-                            Thread.sleep(500);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        bank.add(1);
-                        System.out.println(Thread.currentThread().getName() + "....sale : " + tick--);
+//                synchronized (obj) {
+                if (tick > 0) {
+                    try {
+                        Thread.sleep(500);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
+//                        bank.add(1);
+                    System.out.println(Thread.currentThread().getName() + "....sale : " + tick--);
+//                    }
                 }
             }
         }
