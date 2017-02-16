@@ -13,10 +13,10 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('~/Desktop/fbz/101/fbz_android/footballzone.keystore')
-            keyPassword 'FZ%client0android&store'
+            storeFile file('/Users/lahm/Desktop/fbz/101/fbz_android/footballzone.keystore')
+            storePassword 'FZ%client0android&store'
             keyAlias 'footballzone'
-            storePassword 'FZ%client0android&key'
+            keyPassword 'FZ%client0android&key'
         }
     }
     buildTypes {
