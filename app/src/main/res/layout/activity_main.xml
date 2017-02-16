@@ -1,38 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/thread_btn"
+    <LinearLayout
+        android:id="@+id/activity_main"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="thread" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/file_btn"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="file" />
+        <Button
+            android:id="@+id/thread_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="thread" />
 
-    <Button
-        android:id="@+id/reflection_btn"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="reflection" />
+        <Button
+            android:id="@+id/file_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="file" />
 
-    <Button
-        android:id="@+id/replace_btn"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="replace" />
+        <Button
+            android:id="@+id/reflection_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="reflection" />
 
-    <Button
-        android:id="@+id/search_btn"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="search" />
-</LinearLayout>
+        <Button
+            android:id="@+id/replace_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="replace" />
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="search" />
+
+        <Button
+            android:id="@+id/screen_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="screen_btn" />
+    </LinearLayout>
+</ScrollView>
