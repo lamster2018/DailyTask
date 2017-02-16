@@ -52,5 +52,11 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="screen_btn" />
+
+        <Button
+            android:id="@+id/lifeCircle_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="lifeCircle" />
     </LinearLayout>
 </ScrollView>

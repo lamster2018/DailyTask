@@ -15,6 +15,7 @@ import com.example.lahm.dailytask.Reflection.ReflectionActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button thread_btn, file_btn, reflection_btn, replace_btn, search_btn, screen_btn;
+    private Button lifeCircle_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         replace_btn = (Button) findViewById(R.id.replace_btn);
         search_btn = (Button) findViewById(R.id.search_btn);
         screen_btn = (Button) findViewById(R.id.screen_btn);
+        lifeCircle_btn = (Button) findViewById(R.id.lifeCircle_btn);
     }
 
     private void initListener() {
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         replace_btn.setOnClickListener(this);
         search_btn.setOnClickListener(this);
         screen_btn.setOnClickListener(this);
+        lifeCircle_btn.setOnClickListener(this);
     }
 
     @Override
@@ -64,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.screen_btn:
                 startActivity(new Intent(this, ScreenActivity.class));
+                break;
+            case R.id.lifeCircle_btn:
+                startActivity(new Intent(this, LifeCircleActivity.class));
                 break;
             default:
                 break;

@@ -24,7 +24,8 @@
         <activity android:name=".Reflection.ReflectionActivity" />
         <activity android:name=".ReplaceActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".ScreenActivity"></activity>
+        <activity android:name=".ScreenActivity" />
+        <activity android:name=".LifeCircleActivity" />
 
         <meta-data
             android:name="CHANNEL"
