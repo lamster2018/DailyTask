@@ -1,10 +1,14 @@
 package com.example.lahm.dailytask;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.lahm.dailytask.File.FileActivity;
 import com.example.lahm.dailytask.Reflection.ReflectionActivity;
@@ -16,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView textView = (TextView) findViewById(R.id.channel);
+        textView.setText(getApplicationMetaValue("CHANNEL"));
         initView();
         initListener();
     }
@@ -63,4 +69,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+
+    private String getApplicationMetaValue(String name) {
+        String value = "";
+        try {
+            ApplicationInfo appInfo = getPackageManager()
+                    .getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            value = appInfo.metaData.getString(name);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+
 }

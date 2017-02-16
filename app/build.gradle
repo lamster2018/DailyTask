@@ -11,11 +11,29 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+            storeFile file('~/Desktop/fbz/101/fbz_android/footballzone.keystore')
+            keyPassword 'FZ%client0android&store'
+            keyAlias 'footballzone'
+            storePassword 'FZ%client0android&key'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release//release 指定签名
         }
+    }
+    productFlavors {//一键渠道
+        a {}
+        b {}
+        c {}
+        d {}
+    }
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
     }
 }
 
