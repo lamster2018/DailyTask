@@ -1,6 +1,7 @@
-package com.example.lahm.dailytask;
+package com.example.lahm.dailytask.Thread;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -17,6 +18,7 @@ import com.example.lahm.dailytask.R;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -49,6 +51,24 @@ public class ThreadActivity extends AppCompatActivity {
             }
         }
     };
+    private MyHandler myHandler = new MyHandler(this);
+
+    private static class MyHandler extends Handler {
+        private WeakReference<Context> reference;
+
+        public MyHandler(Context context) {
+            reference = new WeakReference<Context>(context);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            ThreadActivity activity = (ThreadActivity) reference.get();
+            if (activity != null) {
+                //deal ui
+                activity.mResult.setText(msg.getData().getString("aaa"));
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +78,7 @@ public class ThreadActivity extends AppCompatActivity {
         sb.append(Thread.currentThread().getName()).append("\n");
         webView = new WebView(getApplicationContext());
         loadWeb();
+        myHandler.sendEmptyMessage(1);
     }
 
     @SuppressLint({"JavascriptInterface", "SetJavaScriptEnabled"})
@@ -86,6 +107,7 @@ public class ThreadActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         msgHandler.removeCallbacksAndMessages(null);
+        myHandler.removeCallbacksAndMessages(null);
     }
 
     private class MyThreadImp implements Runnable {

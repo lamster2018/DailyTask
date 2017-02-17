@@ -3,7 +3,6 @@ package com.example.lahm.dailytask;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,10 +11,11 @@ import android.widget.TextView;
 
 import com.example.lahm.dailytask.File.FileActivity;
 import com.example.lahm.dailytask.Reflection.ReflectionActivity;
+import com.example.lahm.dailytask.Thread.ThreadActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button thread_btn, file_btn, reflection_btn, replace_btn, search_btn, screen_btn;
-    private Button lifeCircle_btn;
+    private Button lifeCircle_btn, handler_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         search_btn = (Button) findViewById(R.id.search_btn);
         screen_btn = (Button) findViewById(R.id.screen_btn);
         lifeCircle_btn = (Button) findViewById(R.id.lifeCircle_btn);
+        handler_btn = (Button) findViewById(R.id.handler_btn);
     }
 
     private void initListener() {
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         search_btn.setOnClickListener(this);
         screen_btn.setOnClickListener(this);
         lifeCircle_btn.setOnClickListener(this);
+        handler_btn.setOnClickListener(this);
     }
 
     @Override
@@ -70,6 +72,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.lifeCircle_btn:
                 startActivity(new Intent(this, LifeCircleActivity.class));
+                break;
+            case R.id.handler_btn:
+//                startActivity(new Intent(this, HandlerActivity.class));
                 break;
             default:
                 break;
