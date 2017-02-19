@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DailyTask</string>
+    <string name="title_activity_memory_leak">MemoryLeakActivity</string>
 </resources>

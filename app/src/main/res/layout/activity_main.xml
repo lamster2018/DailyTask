@@ -7,7 +7,7 @@
     <LinearLayout
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -60,9 +60,9 @@
             android:text="lifeCircle" />
 
         <Button
-            android:id="@+id/handler_btn"
+            android:id="@+id/memoryLeak_btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="handler" />
+            android:text="memoryLeak" />
     </LinearLayout>
 </ScrollView>

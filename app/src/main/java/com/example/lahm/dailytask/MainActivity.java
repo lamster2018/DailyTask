@@ -15,7 +15,7 @@ import com.example.lahm.dailytask.Thread.ThreadActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button thread_btn, file_btn, reflection_btn, replace_btn, search_btn, screen_btn;
-    private Button lifeCircle_btn, handler_btn;
+    private Button lifeCircle_btn, memoryLeak_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         search_btn = (Button) findViewById(R.id.search_btn);
         screen_btn = (Button) findViewById(R.id.screen_btn);
         lifeCircle_btn = (Button) findViewById(R.id.lifeCircle_btn);
-        handler_btn = (Button) findViewById(R.id.handler_btn);
+        memoryLeak_btn = (Button) findViewById(R.id.memoryLeak_btn);
     }
 
     private void initListener() {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         search_btn.setOnClickListener(this);
         screen_btn.setOnClickListener(this);
         lifeCircle_btn.setOnClickListener(this);
-        handler_btn.setOnClickListener(this);
+        memoryLeak_btn.setOnClickListener(this);
     }
 
     @Override
@@ -73,8 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.lifeCircle_btn:
                 startActivity(new Intent(this, LifeCircleActivity.class));
                 break;
-            case R.id.handler_btn:
-//                startActivity(new Intent(this, HandlerActivity.class));
+            case R.id.memoryLeak_btn:
+                startActivity(new Intent(this, MemoryLeakActivity.class));
                 break;
             default:
                 break;

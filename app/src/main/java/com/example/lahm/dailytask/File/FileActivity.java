@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Debug;
 import android.os.Environment;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -41,7 +42,6 @@ public class FileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file);
         result = (TextView) findViewById(R.id.result);
-
         final EditText target = (EditText) findViewById(R.id.target);
 
         Button find = (Button) findViewById(R.id.find);
@@ -81,7 +81,9 @@ public class FileActivity extends AppCompatActivity {
         Log.i(TAG, "5: " + Environment.getExternalStorageDirectory().getPath());
         Log.i(TAG, "6: " + Environment.getExternalStorageDirectory().getAbsolutePath());
 
+        Debug.startMethodTracing();
         checkFile(targetFileName, Environment.getExternalStorageDirectory().getPath());
+        Debug.stopMethodTracing();
 
     }
 

@@ -41,7 +41,7 @@ public class ScreenActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Ticket t = new Ticket();
+        Ticket t = new Ticket(30);
         TicketSynchronized ticketSynchronized = new TicketSynchronized();
 
 //        new Thread(t).start();
@@ -67,7 +67,11 @@ public class ScreenActivity extends AppCompatActivity {
 
     //存在线程同步问题，会出现0，-1，-2的情况
     class Ticket implements Runnable {
-        private int ticket = 20;
+        private int ticket;
+
+        public Ticket(int ticket) {
+            this.ticket = ticket;
+        }
 
         public void run() {
             while (true) {
