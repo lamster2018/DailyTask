@@ -31,6 +31,7 @@
             android:name="CHANNEL"
             android:value="${CHANNEL_VALUE}" />
 
+        <activity android:name=".WebActivity"></activity>
     </application>
 
 </manifest>

@@ -15,7 +15,7 @@ import com.example.lahm.dailytask.Thread.ThreadActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button thread_btn, file_btn, reflection_btn, replace_btn, search_btn, screen_btn;
-    private Button lifeCircle_btn, memoryLeak_btn;
+    private Button lifeCircle_btn, memoryLeak_btn, web_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         screen_btn = (Button) findViewById(R.id.screen_btn);
         lifeCircle_btn = (Button) findViewById(R.id.lifeCircle_btn);
         memoryLeak_btn = (Button) findViewById(R.id.memoryLeak_btn);
+        web_btn = (Button) findViewById(R.id.web_btn);
     }
 
     private void initListener() {
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         screen_btn.setOnClickListener(this);
         lifeCircle_btn.setOnClickListener(this);
         memoryLeak_btn.setOnClickListener(this);
+        web_btn.setOnClickListener(this);
     }
 
     @Override
@@ -75,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.memoryLeak_btn:
                 startActivity(new Intent(this, MemoryLeakActivity.class));
+                break;
+            case R.id.web_btn:
+                startActivity(new Intent(this, WebActivity.class));
                 break;
             default:
                 break;

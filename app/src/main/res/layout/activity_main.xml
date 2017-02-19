@@ -64,5 +64,11 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="memoryLeak" />
+
+        <Button
+            android:id="@+id/web_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="web" />
     </LinearLayout>
 </ScrollView>
