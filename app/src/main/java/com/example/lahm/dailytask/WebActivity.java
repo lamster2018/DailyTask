@@ -18,6 +18,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
 
+import com.example.lahm.dailytask.Singleton.HungrySingle;
+import com.example.lahm.dailytask.Singleton.LazySingle;
+import com.example.lahm.dailytask.Singleton.SingleDog;
+
 public class WebActivity extends AppCompatActivity {
     private String TAG = "xxxxx";
     private RelativeLayout rootView;
@@ -30,7 +34,7 @@ public class WebActivity extends AppCompatActivity {
         rootView = (RelativeLayout) findViewById(R.id.activity_web);
         webView = new WebView(getApplicationContext());
         initWebView();
-        webView.loadUrl("www.github.com/lamster2018");
+        webView.loadUrl("https://github.com/lamster2018");
     }
 
     @SuppressLint({"SetJavaScriptEnabled", "AddJavascriptInterface"})
