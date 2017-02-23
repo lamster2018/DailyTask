@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
@@ -34,7 +35,9 @@ public class WebActivity extends AppCompatActivity {
         rootView = (RelativeLayout) findViewById(R.id.activity_web);
         webView = new WebView(getApplicationContext());
         initWebView();
-        webView.loadUrl("https://github.com/lamster2018");
+        webView.loadUrl("https://www.sina.com");
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(-1, -1);
+        rootView.addView(webView, lp);
     }
 
     @SuppressLint({"SetJavaScriptEnabled", "AddJavascriptInterface"})
@@ -58,11 +61,13 @@ public class WebActivity extends AppCompatActivity {
     private class MyWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            Log.i(TAG, "shouldOverrideUrlLoading: ");
             return super.shouldOverrideUrlLoading(view, request);
         }
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            Log.i(TAG, "onPageStarted: " + url);
             super.onPageStarted(view, url, favicon);
         }
 
@@ -71,7 +76,7 @@ public class WebActivity extends AppCompatActivity {
             super.onPageFinished(view, url);
             Log.i(TAG, "onPageFinished: ");
             String call = "javascript:alert('alert里的message')";
-            view.loadUrl(call);
+//            view.loadUrl(call);
         }
     }
 

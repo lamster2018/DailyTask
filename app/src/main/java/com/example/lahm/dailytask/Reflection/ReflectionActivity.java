@@ -2,6 +2,7 @@ package com.example.lahm.dailytask.Reflection;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.MenuBuilder;
 import android.view.Menu;
 import android.widget.TextView;
 
@@ -20,9 +21,10 @@ public class ReflectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reflection);
 
         try {
-            Class<?> clazz = Class.forName("com.example.lahm.myapplication.Reflection.ReflectionModel");
+            Class<?> clazz = Class.forName("com.example.lahm.dailytask.Reflection.ReflectionModel");
             //ClassNotFoundException，class的静态方法获取ReflectionModel类的class对象
-            //必须加上包名全称，不然报ClassNotFoundException
+            //必须加上包名全称，不然报ClassNotFoundException,所以用下面这个方法比较好
+//            Class<?> clazz = ReflectionModel.class;
 
             Constructor constructorEmp = clazz.getConstructor(new Class[]{});
             //NoSuchMethodException, ReflectionModel有两个构造器，一个无参，一个 两参
@@ -93,6 +95,7 @@ public class ReflectionActivity extends AppCompatActivity {
 
     private void setMenuIconVisible(Menu menu, boolean visible) throws Exception {
         Class<?> menuClazz = Class.forName("android.support.v7.view.menu.MenuBuilder");
+//        Class<?> menuClazz = MenuBuilder.class;//靠谱
         //因为MenuBuilder是一个MenuBuilder为系统内部的框架类，无法调用
         //教程通过改方法
 //        Method method = menuClazz.getMethod("setOptionalIconsVisible", new Class[]{boolean.class});
