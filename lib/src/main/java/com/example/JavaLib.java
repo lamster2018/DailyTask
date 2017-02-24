@@ -13,11 +13,15 @@ public class JavaLib {
             e.printStackTrace();
         }
 
-//        testListStack();
+        try {
+            testListStack();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
-    private static void testListStack() {
+    private static void testListStack() throws Exception {
         MyListStack<String> emptyListStack = new MyListStack<>();
         emptyListStack.print();
 
