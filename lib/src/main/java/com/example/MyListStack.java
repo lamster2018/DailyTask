@@ -15,11 +15,11 @@ public class MyListStack<T> {
      */
     private static class Node<T> {
         public T data;
-        public Node<T> next;
+        public Node<T> bottom;
 
-        public Node(T data, Node<T> next) {
+        public Node(T data, Node<T> bottom) {
             this.data = data;
-            this.next = next;
+            this.bottom = bottom;
         }
     }
 
@@ -68,8 +68,8 @@ public class MyListStack<T> {
         else return false;
     }
 
-    public boolean push(T data) {
-        if (isFull()) return false;
+    public boolean push(T data) throws Exception {
+        if (isFull()) throw new Exception("full stack !");
         else {
             top = new Node<>(data, top);
             elementCount++;
@@ -77,11 +77,11 @@ public class MyListStack<T> {
         }
     }
 
-    public T pop() {
-        if (isEmpty()) return null;
+    public T pop() throws Exception {
+        if (isEmpty()) throw new Exception("empty stack !");
         else {
             Node<T> node = top;
-            top = top.next;
+            top = top.bottom;
             elementCount--;
             return node.data;
         }
@@ -90,6 +90,14 @@ public class MyListStack<T> {
     public T peek() {
         if (isEmpty()) return null;
         else return top.data;
+    }
+
+    public T getNext() {
+        if (isEmpty()) return null;
+        else {
+            if (top.bottom == null) return null;
+            else return top.bottom.data;
+        }
     }
 
     public void print() {
