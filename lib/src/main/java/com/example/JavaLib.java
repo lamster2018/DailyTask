@@ -6,6 +6,60 @@ import java.util.LinkedList;
 public class JavaLib {
     public static void main(String[] args) {
 
+//        testList();
+        try {
+            testArrayStack();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        testListStack();
+
+    }
+
+    private static void testListStack() {
+        MyListStack<String> emptyListStack = new MyListStack<>();
+        emptyListStack.print();
+
+        MyListStack<String> myListStack = new MyListStack<>(5);
+        myListStack.print();
+        myListStack.push("1");
+        myListStack.push("2");
+        myListStack.push("3");
+        myListStack.print();
+        myListStack.pop();
+        myListStack.push("22");
+        myListStack.push("10");
+        myListStack.push("66");
+        myListStack.print();
+        myListStack.push("1234");
+        while (myListStack.getElementCount() > 0) {
+            System.out.println(myListStack.pop());
+        }
+
+    }
+
+    private static void testArrayStack() throws Exception {
+        MyArrayStack myArrayStack = new MyArrayStack(5);
+
+        myArrayStack.push("1");
+        myArrayStack.push("3");
+        myArrayStack.push("2");
+        myArrayStack.print();
+        myArrayStack.pop();
+        myArrayStack.print();
+        myArrayStack.push("21");
+        myArrayStack.push("0");
+        myArrayStack.push("10");
+        myArrayStack.print();
+        myArrayStack.push("12222");
+
+        while (myArrayStack.getTop() >= 0) {
+            System.out.println(myArrayStack.pop());
+        }
+    }
+
+    private static void testList() {
         long start = System.currentTimeMillis();
         makeArrayList(100000);
         System.out.println(System.currentTimeMillis() - start);
@@ -13,7 +67,6 @@ public class JavaLib {
         long again = System.currentTimeMillis();
         makeLinkedList(100000);
         System.out.println(System.currentTimeMillis() - again);
-
     }
 
     private static int[] expandArrayLength(int[] arr) {

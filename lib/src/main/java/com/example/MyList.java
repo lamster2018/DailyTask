@@ -153,11 +153,19 @@ public class MyList<T> implements Iterable<T> {
         return indexNode.data;
     }
 
+    /**
+     * 实现迭代器接口方法
+     *
+     * @return
+     */
     @Override
     public Iterator<T> iterator() {//实现MyList类的接口方法
         return new MyListIterator();
     }
 
+    /**
+     * 内部类的迭代器，方便获取外部类的值
+     */
     private class MyListIterator implements Iterator<T> {
         private Node<T> current = beginMarker.next;
         private int expectedModCount = modCount;
