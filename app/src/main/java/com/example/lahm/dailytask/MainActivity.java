@@ -17,12 +17,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button thread_btn, file_btn, reflection_btn, replace_btn, search_btn, screen_btn;
     private Button lifeCircle_btn, memoryLeak_btn, web_btn;
 
+    // Used to load the 'native-lib' library on application startup.
+    static {
+        System.loadLibrary("native-lib");
+    }
+
+    /**
+     * A native method that is implemented by the 'native-lib' native library,
+     * which is packaged with this application.
+     */
+    public native String stringFromJNI();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView = (TextView) findViewById(R.id.channel);
         textView.setText(getApplicationMetaValue("CHANNEL"));
+        textView.setText(stringFromJNI());
         initView();
         initListener();
     }
