@@ -111,19 +111,6 @@ public class MemoryLeakActivity extends AppCompatActivity {
 //        new SafeAsyncTask(this).execute();
 //        safeHandler.postDelayed(safeRunnable, 1000);
         // TODO: 17/2/17 still have question about use safe - handler/runnable/thread
-
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override

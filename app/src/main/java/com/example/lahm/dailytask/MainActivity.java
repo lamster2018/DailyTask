@@ -15,18 +15,7 @@ import com.example.lahm.dailytask.Thread.ThreadActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button thread_btn, file_btn, reflection_btn, replace_btn, search_btn, screen_btn;
-    private Button lifeCircle_btn, memoryLeak_btn, web_btn;
-
-    // Used to load the 'native-lib' library on application startup.
-    static {
-        System.loadLibrary("native-lib");
-    }
-
-    /**
-     * A native method that is implemented by the 'native-lib' native library,
-     * which is packaged with this application.
-     */
-    public native String stringFromJNI();
+    private Button lifeCircle_btn, memoryLeak_btn, web_btn, ndk_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         TextView textView = (TextView) findViewById(R.id.channel);
         textView.setText(getApplicationMetaValue("CHANNEL"));
-        textView.setText(stringFromJNI());
         initView();
         initListener();
     }
@@ -49,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lifeCircle_btn = (Button) findViewById(R.id.lifeCircle_btn);
         memoryLeak_btn = (Button) findViewById(R.id.memoryLeak_btn);
         web_btn = (Button) findViewById(R.id.web_btn);
+        ndk_btn = (Button) findViewById(R.id.ndk_btn);
     }
 
     private void initListener() {
@@ -61,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lifeCircle_btn.setOnClickListener(this);
         memoryLeak_btn.setOnClickListener(this);
         web_btn.setOnClickListener(this);
+        ndk_btn.setOnClickListener(this);
     }
 
     @Override
@@ -92,6 +82,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.web_btn:
                 startActivity(new Intent(this, WebActivity.class));
+                break;
+            case R.id.ndk_btn:
+                startActivity(new Intent(this, NDKActivity.class));
                 break;
             default:
                 break;

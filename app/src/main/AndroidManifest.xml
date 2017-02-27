@@ -26,12 +26,14 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".ScreenActivity" />
         <activity android:name=".LifeCircleActivity" />
+        <activity android:name=".WebActivity" />
+        <activity android:name=".MemoryLeakActivity" />
+        <activity android:name=".NDKActivity" />
 
         <meta-data
             android:name="CHANNEL"
             android:value="${CHANNEL_VALUE}" />
 
-        <activity android:name=".WebActivity"></activity>
     </application>
 
 </manifest>
