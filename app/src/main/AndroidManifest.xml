@@ -29,11 +29,18 @@
         <activity android:name=".WebActivity" />
         <activity android:name=".MemoryLeakActivity" />
         <activity android:name=".NDKActivity" />
+        <activity android:name=".Service.ServiceActivity" />
 
         <meta-data
             android:name="CHANNEL"
             android:value="${CHANNEL_VALUE}" />
 
+        <service android:name=".Service.StartService">
+            <intent-filter>
+                <action android:name="com.abcd.MyService" />
+            </intent-filter>
+        </service>
+        <service android:name=".Service.MyBindService" />
     </application>
 
 </manifest>

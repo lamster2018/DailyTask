@@ -11,11 +11,12 @@ import android.widget.TextView;
 
 import com.example.lahm.dailytask.File.FileActivity;
 import com.example.lahm.dailytask.Reflection.ReflectionActivity;
+import com.example.lahm.dailytask.Service.ServiceActivity;
 import com.example.lahm.dailytask.Thread.ThreadActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button thread_btn, file_btn, reflection_btn, replace_btn, search_btn, screen_btn;
-    private Button lifeCircle_btn, memoryLeak_btn, web_btn, ndk_btn;
+    private Button lifeCircle_btn, memoryLeak_btn, web_btn, ndk_btn, service_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         memoryLeak_btn = (Button) findViewById(R.id.memoryLeak_btn);
         web_btn = (Button) findViewById(R.id.web_btn);
         ndk_btn = (Button) findViewById(R.id.ndk_btn);
+        service_btn = (Button) findViewById(R.id.service_btn);
     }
 
     private void initListener() {
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         memoryLeak_btn.setOnClickListener(this);
         web_btn.setOnClickListener(this);
         ndk_btn.setOnClickListener(this);
+        service_btn.setOnClickListener(this);
     }
 
     @Override
@@ -86,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.ndk_btn:
                 startActivity(new Intent(this, NDKActivity.class));
                 break;
+            case R.id.service_btn:
+                startActivity(new Intent(this, ServiceActivity.class));
+                break;
             default:
                 break;
         }
@@ -96,7 +102,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String value = "";
         try {
             ApplicationInfo appInfo = getPackageManager()
-                    .getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+                    .getApplicationInfo(getPackageName(),
+                            PackageManager.GET_META_DATA);
             value = appInfo.metaData.getString(name);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();

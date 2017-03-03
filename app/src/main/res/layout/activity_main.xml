@@ -76,5 +76,11 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="ndk" />
+
+        <Button
+            android:id="@+id/service_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="service" />
     </LinearLayout>
 </ScrollView>
