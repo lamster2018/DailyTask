@@ -101,6 +101,6 @@ public class ServiceActivity extends AppCompatActivity implements View.OnClickLi
         super.onDestroy();
         //动态注册广播，一定要反注册，否则报错--has leaked IntentReceiver
         unregisterReceiver(myBroadcastReceiver);
-        unbindService(sc);
+        unbindService(sc);//如果service没有bind，那么会报错
     }
 }
