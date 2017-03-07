@@ -54,9 +54,6 @@ public class FileActivity extends AppCompatActivity {
                 }
                 if (!checkSysPermission(WRITE_EXTERNAL_STORAGE, PERMISSION_STROGE_CODE))
                     return;//无权限被拒
-                //Cannot execute task: the task has already been executed
-                // (a task can be executed only once)
-                // so i have to new a new AsyncTask without consider memory-using
                 list.clear();
                 sb.delete(0, sb.length());
                 result.setText("waiting...");
@@ -65,6 +62,9 @@ public class FileActivity extends AppCompatActivity {
         });
     }
 
+    //Cannot execute task: the task has already been executed
+    // (a task can be executed only once)
+    // so i have to new a new AsyncTask without consider memory-using
     /**
      * 多线程查找file
      * 1.先判断权限
@@ -119,14 +119,14 @@ public class FileActivity extends AppCompatActivity {
         if (checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED) {
             return true;//已经允许了的无需check
         }
-        //被拒绝了的
+        //1.没有申请这个权限，false，也就是为什么要先完成上方两个判断；
+        //2.拒绝给权限，但是没有勾选『不在提示』，true,此时要给个更见完整的说明，最好用dialog
+        //3.拒绝给权限，而且勾选了『不在提示』，false
         if (shouldShowRequestPermissionRationale(permission)) {
-            //进这里的条件，第一次拒绝，第二次进，（会继续提醒）
-            //如果选择不再提醒，这里进不去
-            showToast("need permission");//->  这个提示必须要更加明显，toast不够
+            showToast("need permission");//->  这个提示必须要更加明显，toast不够，
+            // 最好是dialog，然后跳设置，手动开权限
             requestPermissions(new String[]{permission}, requestCode);
         } else {
-            //进这里的条件，首次请求，&选择不再提示且拒绝，
             requestPermissions(new String[]{permission}, requestCode);
         }
         return false;
@@ -138,12 +138,13 @@ public class FileActivity extends AppCompatActivity {
         //requestPermissions的回调
         if (requestCode == PERMISSION_STROGE_CODE) {
             if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //第一次询问读写权限，且允许,就直接调用选择相册的照片
+                //第一次询问读写权限，且允许,就直接做事情，这里只showToast
                 showToast("request permission success");
-            } else {//询问权限失败，跳到设置界面
+            } else {
+                //被拒绝了
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                         && !shouldShowRequestPermissionRationale(permissions[0])) {
-                    //被拒绝，且不再提醒的
+                    //而且勾选了不再提示的，我在这里跳转到设置界面，手动打开权限，这个步骤在前面做最好
                     jump2settings();
                 } else {
                     showToast(" request permission failed");
