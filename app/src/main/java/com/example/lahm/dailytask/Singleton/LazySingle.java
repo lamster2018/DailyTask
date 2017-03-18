@@ -11,18 +11,21 @@ import android.util.Log;
 public class LazySingle {
     private static LazySingle lazySingle;
 
+    //thread unsafe mode
     public static LazySingle getLazySingle() {
         if (lazySingle == null)
             lazySingle = new LazySingle();
         return lazySingle;
     }
 
+    //not recommend
     public static synchronized LazySingle getLazySingleSynchronized() {
         if (lazySingle == null)
             lazySingle = new LazySingle();
         return lazySingle;
     }
 
+    //double check lock,many third library use this single pattern
     public static LazySingle getLazySingleDoubleLock() {
         if (lazySingle == null) {
             synchronized (LazySingle.class) {

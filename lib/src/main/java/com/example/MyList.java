@@ -139,6 +139,7 @@ public class MyList<T> implements Iterable<T> {
      * a 《-> indexNode 《-> b
      * 把 a的后链指向 b， a(indexNode.prev） -> b(indexNode.next）
      * 把 b的前链指向 a， b(indexNode.next) 《- a（indexNode.prev）
+     * 那需不需要 indexNode.next = null;indexNode.prev = null;？
      * 《->本质是引用
      * 这样 在链表里，虽然indexNode还引用了a和b，但是没有谁引用indexNode，它实际是可被回收的
      *

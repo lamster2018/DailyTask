@@ -43,9 +43,11 @@ public class ReflectionActivity extends AppCompatActivity {
             TextView tv = (TextView) findViewById(R.id.result);
             tv.setText(result);
 
-            //以上是public，以下private
-            //如果想用反射修改访问控制检查的话，获取Method和Field对象的时候一定要用getDeclaredField和getDeclaredMethod。不要用getField和getMethod。
-            //虽然这两个方法的参数都是相同的，
+            // 以上是public，以下private
+            // 如果想用反射修改访问控制检查的话，
+            // 获取Method和Field对象的时候一定要用getDeclaredField和getDeclaredMethod,
+            // 不要用getField和getMethod。
+            // 虽然这两个方法的参数都是相同的，
             // 但不同点在于getMethod和getField只能获得public修饰的属性和方法。
             // 而getDeclared可以获取任何类型的属性和方法，
             // 因为这个例子要调用私有的属性和方法，所以要用getDeclaredXX。

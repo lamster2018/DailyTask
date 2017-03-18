@@ -70,7 +70,8 @@ public class ServiceActivity extends AppCompatActivity implements View.OnClickLi
     private ServiceConnection sc = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            //这里的service实际就是自定义的iBinder，里面是实现我们的方法，拿到真正的myBinderService类，在调用后者方法
+            //这里的service实际就是自定义的iBinder，里面是实现我们的方法，
+            // 拿到真正的myBinderService类，在调用后者方法
             Log.i(TAG, "onServiceConnected: ");
             myBindService = ((MyBindService.MyBinder) service).getMyService();
             ((MyBindService.MyBinder) service).ccccc();
