@@ -2,6 +2,7 @@ package com.example;
 
 import com.example.AbstractDataType.MyArrayStack;
 import com.example.AbstractDataType.MyListStack;
+import com.example.DesigeMode.BuilderMode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -10,18 +11,23 @@ public class JavaLib {
     public static void main(String[] args) {
 
 //        testList();
-        try {
-            testArrayStack();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            testListStack();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+//        try {
+//            testArrayStack();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            testListStack();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        BuilderMode.Builder builder = new BuilderMode.Builder("abc")
+                .setCpu("i7-6700")
+                .setMainBoard("ASUS")
+                .setSSD(512);
+        BuilderMode computer = builder.createComputer();
+        computer.show();
     }
 
     private static void testListStack() throws Exception {
