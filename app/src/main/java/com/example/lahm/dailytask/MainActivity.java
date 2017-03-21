@@ -14,9 +14,7 @@ import com.example.lahm.dailytask.Reflection.ReflectionActivity;
 import com.example.lahm.dailytask.Service.ServiceActivity;
 import com.example.lahm.dailytask.Thread.ThreadActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button thread_btn, file_btn, reflection_btn, replace_btn, search_btn, screen_btn;
-    private Button lifeCircle_btn, memoryLeak_btn, web_btn, ndk_btn, service_btn;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,78 +23,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView textView = (TextView) findViewById(R.id.channel);
         textView.setText(getApplicationMetaValue("CHANNEL"));
         initView();
-        initListener();
+    }
+
+    /**
+     * 简便写法
+     *
+     * @param buttonRid
+     * @param targetActivity
+     * @param <T>
+     */
+    private <T extends AppCompatActivity> void setListener(int buttonRid, final Class<T> targetActivity) {
+        findViewById(buttonRid).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, targetActivity));
+            }
+        });
     }
 
     private void initView() {
-        thread_btn = (Button) findViewById(R.id.thread_btn);
-        file_btn = (Button) findViewById(R.id.file_btn);
-        reflection_btn = (Button) findViewById(R.id.reflection_btn);
-        replace_btn = (Button) findViewById(R.id.replace_btn);
-        search_btn = (Button) findViewById(R.id.search_btn);
-        screen_btn = (Button) findViewById(R.id.screen_btn);
-        lifeCircle_btn = (Button) findViewById(R.id.lifeCircle_btn);
-        memoryLeak_btn = (Button) findViewById(R.id.memoryLeak_btn);
-        web_btn = (Button) findViewById(R.id.web_btn);
-        ndk_btn = (Button) findViewById(R.id.ndk_btn);
-        service_btn = (Button) findViewById(R.id.service_btn);
+        setListener(R.id.thread_btn, ThreadActivity.class);
+        setListener(R.id.file_btn, FileActivity.class);
+        setListener(R.id.reflection_btn, ReflectionActivity.class);
+        setListener(R.id.replace_btn, ReplaceActivity.class);
+        setListener(R.id.search_btn, SearchActivity.class);
+        setListener(R.id.screen_btn, ScreenActivity.class);
+        setListener(R.id.lifeCircle_btn, LifeCircleActivity.class);
+        setListener(R.id.memoryLeak_btn, MemoryLeakActivity.class);
+        setListener(R.id.web_btn, WebActivity.class);
+        setListener(R.id.ndk_btn, NDKActivity.class);
+        setListener(R.id.service_btn, ServiceActivity.class);
     }
-
-    private void initListener() {
-        thread_btn.setOnClickListener(this);
-        file_btn.setOnClickListener(this);
-        reflection_btn.setOnClickListener(this);
-        replace_btn.setOnClickListener(this);
-        search_btn.setOnClickListener(this);
-        screen_btn.setOnClickListener(this);
-        lifeCircle_btn.setOnClickListener(this);
-        memoryLeak_btn.setOnClickListener(this);
-        web_btn.setOnClickListener(this);
-        ndk_btn.setOnClickListener(this);
-        service_btn.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.thread_btn:
-                startActivity(new Intent(this, ThreadActivity.class));
-                break;
-            case R.id.file_btn:
-                startActivity(new Intent(this, FileActivity.class));
-                break;
-            case R.id.reflection_btn:
-                startActivity(new Intent(this, ReflectionActivity.class));
-                break;
-            case R.id.replace_btn:
-                startActivity(new Intent(this, ReplaceActivity.class));
-                break;
-            case R.id.search_btn:
-                startActivity(new Intent(this, SearchActivity.class));
-                break;
-            case R.id.screen_btn:
-                startActivity(new Intent(this, ScreenActivity.class));
-                break;
-            case R.id.lifeCircle_btn:
-                startActivity(new Intent(this, LifeCircleActivity.class));
-                break;
-            case R.id.memoryLeak_btn:
-                startActivity(new Intent(this, MemoryLeakActivity.class));
-                break;
-            case R.id.web_btn:
-                startActivity(new Intent(this, WebActivity.class));
-                break;
-            case R.id.ndk_btn:
-                startActivity(new Intent(this, NDKActivity.class));
-                break;
-            case R.id.service_btn:
-                startActivity(new Intent(this, ServiceActivity.class));
-                break;
-            default:
-                break;
-        }
-    }
-
 
     private String getApplicationMetaValue(String name) {
         String value = "";
