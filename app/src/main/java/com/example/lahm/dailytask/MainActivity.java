@@ -27,12 +27,15 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 简便写法
+     * 写法搜索 泛型方法，该泛型通配上限是 继承了AppCompatActivity的泛型类型，not类
+     * 传入的参数 是一个class类型的参数，该参数是继承了AppCompatActivity的targetActivity.class
      *
      * @param buttonRid
      * @param targetActivity
      * @param <T>
      */
-    private <T extends AppCompatActivity> void setListener(int buttonRid, final Class<T> targetActivity) {
+    private <T extends AppCompatActivity> void setListener(int buttonRid,
+                                                           final Class<T> targetActivity) {
         findViewById(buttonRid).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
