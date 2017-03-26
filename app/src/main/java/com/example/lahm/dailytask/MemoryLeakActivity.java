@@ -6,16 +6,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
 
+/**
+ * 内存泄露，这里模拟了，非静态匿名内部类持有外部引用，handler的例子，
+ * 问题在，dump heap后，发现，
+ * 有safeRunnable,safeHandler均持有MemoryLeakActivity的实例多个
+ * 这样，并没发现能解决内存泄露的问题，参考的链接，见收藏夹/性能相关
+ */
 public class MemoryLeakActivity extends AppCompatActivity {
     private final static String TAG = "aaaaaa";
     private TextView tv;
@@ -109,14 +111,30 @@ public class MemoryLeakActivity extends AppCompatActivity {
         setContentView(R.layout.activity_memory_leak);
 //        new Thread(safeRunnable).start();
 //        new SafeAsyncTask(this).execute();
-//        safeHandler.postDelayed(safeRunnable, 1000);
+//        safeHandler.post(safeRunnable);
         // TODO: 17/2/17 still have question about use safe - handler/runnable/thread
+//        testLeak();
+    }
+
+    private void testLeak() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         Log.i(TAG, "onDestroy: ");
-        safeHandler.removeCallbacksAndMessages(null);
+        super.onDestroy();
+//        safeHandler.removeCallbacksAndMessages(null);
     }
 }
