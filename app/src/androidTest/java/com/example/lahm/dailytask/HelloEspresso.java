@@ -30,7 +30,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
  * Project Name:DailyTask
  * Package Name:com.example.lahm.dailytask
  * Created by lahm on 2017/3/16 下午12:30 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  * <p>
  * https://segmentfault.com/a/1190000004355178
  */

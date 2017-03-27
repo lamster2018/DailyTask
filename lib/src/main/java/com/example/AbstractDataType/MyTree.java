@@ -5,7 +5,7 @@ package com.example.AbstractDataType;
  * Project Name:DailyTask
  * Package Name:com.example
  * Created by lahm on 2017/2/26 下午3:59 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  * <p>
  * Java中的compareTo()函数用法-Comparable
  * http://blog.csdn.net/nanjifengchen/article/details/6009707

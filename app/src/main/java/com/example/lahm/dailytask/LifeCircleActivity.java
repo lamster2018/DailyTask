@@ -9,7 +9,7 @@ import android.util.Log;
  * Project Name:DailyTask
  * Package Name:com.example.lahm.dailytask
  * Created by lahm on 17/2/16 下午4:43 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  */
 
 public class LifeCircleActivity extends AppCompatActivity {

@@ -4,7 +4,7 @@ package com.example.AbstractDataType;
  * Project Name:DailyTask
  * Package Name:com.example
  * Created by lahm on 2017/2/24 上午10:43 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  */
 
 public class MyListStack<T> {

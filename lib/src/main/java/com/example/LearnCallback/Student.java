@@ -4,7 +4,7 @@ package com.example.LearnCallback;
  * Project Name:DailyTask
  * Package Name:com.example.LearnCallback
  * Created by lahm on 2017/3/27 下午4:46 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  * <p>
  * 不同学生有不同的名字
  * 每个学生都有思考的功能（Thinking接口）

@@ -4,7 +4,7 @@ package com.example.DesigeMode;
  * Project Name:DailyTask
  * Package Name:com.example.DesigeMode
  * Created by lahm on 2017/3/20 上午11:21 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  * 适配器模式在设计模式体系中属于结构型模式，
  * 可以分为三类：类的适配器模式、对象的适配器模式和接口的适配器模式，
  * 由于类和接口的适配器模式需要适配器继承原有的类，

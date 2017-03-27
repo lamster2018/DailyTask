@@ -7,7 +7,7 @@ import android.view.View;
  * Project Name:DailyTask
  * Package Name:com.example.lahm.dailytask
  * Created by lahm on 2017/3/1 上午11:03 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  */
 
 public abstract class BaseAdapter extends RecyclerView.Adapter {

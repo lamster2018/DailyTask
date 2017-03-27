@@ -6,7 +6,7 @@ import android.util.Log;
  * Project Name:DailyTask
  * Package Name:com.example.lahm.dailytask.Singleton
  * Created by lahm on 17/2/20 上午9:29 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  */
 public class LazySingle {
     private static LazySingle lazySingle;

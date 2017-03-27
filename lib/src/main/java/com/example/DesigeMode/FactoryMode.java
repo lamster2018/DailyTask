@@ -4,7 +4,7 @@ package com.example.DesigeMode;
  * Project Name:DailyTask
  * Package Name:com.example.DesigeMode
  * Created by lahm on 2017/3/20 下午12:32 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  * http://blog.csdn.net/beyond0525/article/details/22794221
  */
 

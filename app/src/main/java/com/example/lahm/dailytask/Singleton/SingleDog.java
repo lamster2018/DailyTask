@@ -4,7 +4,7 @@ package com.example.lahm.dailytask.Singleton;
  * Project Name:DailyTask
  * Package Name:com.example.lahm.dailytask.Singleton
  * Created by lahm on 17/2/19 下午4:21 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  */
 
 public enum SingleDog {

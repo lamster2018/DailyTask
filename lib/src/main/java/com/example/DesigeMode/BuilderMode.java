@@ -4,7 +4,7 @@ package com.example.DesigeMode;
  * Project Name:DailyTask
  * Package Name:com.example.DesigeMode
  * Created by lahm on 2017/3/20 下午1:24 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  * 设计模式分为三大类：
  * 创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。
  * 结构型模式，共七种：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式。

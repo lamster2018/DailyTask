@@ -6,7 +6,7 @@ import android.util.Log;
  * Project Name:MyApplication
  * Package Name:com.example.lahm.myapplication
  * Created by lahm on 17/2/13 上午10:12 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  */
 class ReflectionModel {
     private long id;

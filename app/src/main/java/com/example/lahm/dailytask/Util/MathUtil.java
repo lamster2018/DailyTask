@@ -4,7 +4,7 @@ package com.example.lahm.dailytask.Util;
  * Project Name:DailyTask
  * Package Name:com.example.lahm.dailytask.Util
  * Created by lahm on 2017/2/22 下午2:50 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  */
 
 public class MathUtil {

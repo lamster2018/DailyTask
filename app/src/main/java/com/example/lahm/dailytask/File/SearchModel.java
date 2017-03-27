@@ -4,7 +4,7 @@ package com.example.lahm.dailytask.File;
  * Project Name:MyApplication
  * Package Name:com.example.lahm.myapplication
  * Created by lahm on 17/2/11 下午12:15 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  */
 
 public class SearchModel {

@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
  * Project Name:DailyTask
  * Package Name:com.example.lahm.dailytask
  * Created by lahm on 17/2/17 下午3:47 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  */
 
 public class BaseActivity extends AppCompatActivity {

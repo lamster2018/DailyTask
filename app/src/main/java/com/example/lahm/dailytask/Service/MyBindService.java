@@ -11,7 +11,7 @@ import android.util.Log;
  * Project Name:DailyTask
  * Package Name:com.example.lahm.dailytask.Service
  * Created by lahm on 2017/3/3 下午3:53 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  * <p>
  * 使用使用context.bindService()启动Service会经历：
  * context.bindService()->onCreate()->onBind()->Service running

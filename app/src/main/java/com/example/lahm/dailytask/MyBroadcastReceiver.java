@@ -9,7 +9,7 @@ import android.util.Log;
  * Project Name:DailyTask
  * Package Name:com.example.lahm.dailytask
  * Created by lahm on 2017/3/3 下午3:55 .
- * Copyright (c) 2017, www.footballzone.com All Rights Reserved.
+ * https://github.com/lamster2018
  */
 
 public class MyBroadcastReceiver extends BroadcastReceiver {
