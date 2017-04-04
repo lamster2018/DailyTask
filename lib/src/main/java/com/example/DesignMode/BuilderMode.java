@@ -1,8 +1,8 @@
-package com.example.DesigeMode;
+package com.example.DesignMode;
 
 /**
  * Project Name:DailyTask
- * Package Name:com.example.DesigeMode
+ * Package Name:com.example.DesignMode
  * Created by lahm on 2017/3/20 下午1:24 .
  * https://github.com/lamster2018
  * 设计模式分为三大类：

@@ -1,8 +1,8 @@
-package com.example.DesigeMode;
+package com.example.DesignMode;
 
 /**
  * Project Name:DailyTask
- * Package Name:com.example.DesigeMode
+ * Package Name:com.example.DesignMode
  * Created by lahm on 2017/3/20 下午12:32 .
  * https://github.com/lamster2018
  * http://blog.csdn.net/beyond0525/article/details/22794221
