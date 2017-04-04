@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lahm.dailytask.MVP.view.UserLoginActivity">
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <EditText
+            android:id="@+id/id_et_username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="userName" />
+
+        <EditText
+            android:id="@+id/id_et_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="pwd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/id_btn_login"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="login" />
+
+            <Button
+                android:id="@+id/id_btn_clear"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="clear" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/id_pb_loading"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

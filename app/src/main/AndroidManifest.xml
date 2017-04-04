@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+            <!--<activity android:name=".MVP.view.UserLoginActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +31,7 @@
         <activity android:name=".MemoryLeakActivity" />
         <activity android:name=".NDKActivity" />
         <activity android:name=".Service.ServiceActivity" />
+        <activity android:name=".MVP.view.UserLoginActivity" />
 
         <meta-data
             android:name="CHANNEL"
@@ -41,6 +43,7 @@
             </intent-filter>
         </service>
         <service android:name=".Service.MyBindService" />
+
     </application>
 
 </manifest>
