@@ -51,6 +51,10 @@ public class ThreadActivity extends AppCompatActivity {
             }
         }
     };
+    // 用普通内部类，比如非静态内部类，非静态匿名内部类，
+    // 这些内部类可以调用外部类的方法和属性，也就是默认持有了外部类的一个引用，
+    // 假如内部类开了线程操作，而外部activity已经走onDestroy，外部类并不会被回收
+    // 静态内部类的好处在于，静态类不需要外部类的引用,所以安全
     private MyHandler myHandler = new MyHandler(this);
 
     private static class MyHandler extends Handler {
