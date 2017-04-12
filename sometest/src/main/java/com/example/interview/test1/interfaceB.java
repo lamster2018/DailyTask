@@ -1,4 +1,4 @@
-package com.example.interview1;
+package com.example.interview.test1;
 
 /**
  * Project Name:DailyTask
@@ -8,8 +8,6 @@ package com.example.interview1;
  * https://github.com/lamster2018
  */
 
-public interface interfaceA {
-    void sum();
-
+public interface interfaceB {
     int sub(int i);
 }
