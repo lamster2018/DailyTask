@@ -19,12 +19,12 @@ public class MyClass implements interfaceB, interfaceA {
     }
 
     public static void main(String[] args) {
-//        classB b = new classB(1);
-//        System.out.println(b.i);
+        classB b = new classB(1);
+        System.out.println(b.i);
 //        classA a = new classA();
 //        classA.innerClassC c = a.new innerClassC();
 //        c.print();
-        printStar(5);
+//        printStar(5);
     }
 
     // print star like
