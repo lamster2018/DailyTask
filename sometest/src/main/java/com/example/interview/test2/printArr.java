@@ -23,20 +23,22 @@ package com.example.interview.test2;
 
 public class printArr {
     public static void main(String[] args) {
-        int n = 4;
+        int n = 6;
         int[][] arr = new int[n][n];
-        arr[0] = new int[]{0, 1, 2, 3};
-        arr[1] = new int[]{4, 5, 6, 7};
-        arr[2] = new int[]{8, 9, 10, 11};
-        arr[3] = new int[]{12, 13, 14, 15};
+        arr[0] = new int[]{0, 1, 2, 3, 4, 5};
+        arr[1] = new int[]{6, 7, 8, 9, 10, 11};
+        arr[2] = new int[]{12, 13, 14, 15, 16, 17};
+        arr[3] = new int[]{18, 19, 20, 21, 22, 23};
+        arr[4] = new int[]{24, 25, 26, 27, 28, 29};
+        arr[5] = new int[]{30, 31, 32, 33, 34, 35};
         printReverse(arr);
 //        print(arr);
     }
 
     //难点在，判断何时换向
     private static void printReverse(int[][] arr) {
-        int row = arr.length;
-        int col = arr[0].length;
+        int row = arr.length;//行
+        int col = arr[0].length;//列
         //一维数组直接打印
         if (row == 1) {
             System.out.println(arr[0][0]);
@@ -47,8 +49,8 @@ public class printArr {
         int directX = 0;//-1向←移动，0该方向不变
         int directY = -1;//-1向上移动,0该方向不变
         // 开始坐标
-        int xStart = row / 2;//偶数个时，是取靠后的那个
-        int yStart = col % 2 == 0 ? col / 2 - 1 : col / 2;
+        int xStart = row / 2;//偶数个取靠后的列
+        int yStart = col % 2 == 0 ? col / 2 - 1 : col / 2;//偶数个时，取上一排
         //边界值
         int xEnd = row - 1;
         int yEnd = col - 1;
@@ -60,6 +62,8 @@ public class printArr {
         boolean[][] checkArr = new boolean[row][col];
         // 优先拐弯
         while (count < sum) {
+            System.out.println(arr[yStart][xStart]);
+            checkArr[yStart][xStart] = true;//走过的位置做个标记
             if (directX < 0) {
                 //只向左平移, 竖直方向为0
                 if (directX + xStart < 0 || !checkArr[yStart + 1][xStart]) {
@@ -92,8 +96,6 @@ public class printArr {
                 directX = 0;
                 directY = 0;
             }
-            System.out.println(arr[yStart][xStart]);
-            checkArr[yStart][xStart] = true;//走过的位置应该做个标记
             yStart += directY;
             xStart += directX;
             count++;
