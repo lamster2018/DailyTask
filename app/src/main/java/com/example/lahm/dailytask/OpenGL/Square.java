@@ -1,8 +1,6 @@
 package com.example.lahm.dailytask.OpenGL;
 
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
 
@@ -36,21 +34,8 @@ public class Square {
     private ShortBuffer indexBuffer;
 
     public Square() {
-        // a float is 4 bytes, therefore we multiply the number if
-        // vertices with 4.
-        ByteBuffer vbb = ByteBuffer.allocateDirect(vertices.length * 4);
-        vbb.order(ByteOrder.nativeOrder());
-        vertexBuffer = vbb.asFloatBuffer();
-        vertexBuffer.put(vertices);
-        vertexBuffer.position(0);
-
-        // short is 2 bytes, therefore we multiply the number if
-        // vertices with 2.
-        ByteBuffer ibb = ByteBuffer.allocateDirect(indices.length * 2);
-        ibb.order(ByteOrder.nativeOrder());
-        indexBuffer = ibb.asShortBuffer();
-        indexBuffer.put(indices);
-        indexBuffer.position(0);
+        vertexBuffer = BufferUtil.float2FloatBuffer(vertices);
+        indexBuffer = BufferUtil.short2ShortBuffer(indices);
     }
 
     /**
@@ -59,28 +44,27 @@ public class Square {
      * @param gl
      */
     public void draw(GL10 gl) {
-        // Counter-clockwise winding.
-        gl.glFrontFace(GL10.GL_CCW); // OpenGL docs
+        // 逆时针绘制
+        gl.glFrontFace(GL10.GL_CCW);
         // Enable face culling.
-        gl.glEnable(GL10.GL_CULL_FACE); // OpenGL docs
+        gl.glEnable(GL10.GL_CULL_FACE);
         // What faces to remove with the face culling.
-        gl.glCullFace(GL10.GL_BACK); // OpenGL docs
+        gl.glCullFace(GL10.GL_BACK);
 
-        // Enabled the vertices buffer for writing and to be used during
-        // rendering.
-        gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);// OpenGL docs.
-        // Specifies the location and data format of an array of vertex
-        // coordinates to use when rendering.
+        // 启用顶点坐标数组
+        gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+        // 设置顶点位置数据，第一个参数指定多少个元素设置一个坐标，一般是3，
+        // 第二个参数，第一个参数如果是float，这里就设置GL10.GL_FLOAT来解析，
+        // 第四个参数，是形如（x1,y1,z1,...,xN,yN,zN）的一维坐标数组，前边经过处理为buffer了
         gl.glVertexPointer(3, GL10.GL_FLOAT, 0, vertexBuffer);
 
         gl.glDrawElements(GL10.GL_TRIANGLES, indices.length,
                 GL10.GL_UNSIGNED_SHORT, indexBuffer);
 
-        // Disable the vertices buffer.
+        // 结束绘制，关闭设置
+        gl.glFinish();
         gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
-        // Disable face culling.
-        gl.glDisable(GL10.GL_CULL_FACE); // OpenGL docs
+        gl.glDisable(GL10.GL_CULL_FACE);
     }
-
 }
 
