@@ -82,5 +82,11 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="service" />
+
+        <Button
+            android:id="@+id/test_openGl_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="test_opengl" />
     </LinearLayout>
 </ScrollView>

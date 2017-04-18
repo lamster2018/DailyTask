@@ -35,6 +35,7 @@
         <activity android:name=".NDKActivity" />
         <activity android:name=".Service.ServiceActivity" />
         <activity android:name=".MVP.view.UserLoginActivity" />
+        <activity android:name=".OpenGL.TestOpenGLActivity" />
 
         <meta-data
             android:name="CHANNEL"

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.lahm.dailytask.File.FileActivity;
+import com.example.lahm.dailytask.OpenGL.TestOpenGLActivity;
 import com.example.lahm.dailytask.Reflection.ReflectionActivity;
 import com.example.lahm.dailytask.Service.ServiceActivity;
 import com.example.lahm.dailytask.Thread.ThreadActivity;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         setListener(R.id.web_btn, WebActivity.class);
         setListener(R.id.ndk_btn, NDKActivity.class);
         setListener(R.id.service_btn, ServiceActivity.class);
+        setListener(R.id.test_openGl_btn, TestOpenGLActivity.class);
     }
 
     private String getApplicationMetaValue(String name) {
