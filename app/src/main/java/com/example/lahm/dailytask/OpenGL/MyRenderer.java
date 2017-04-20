@@ -15,8 +15,12 @@ import javax.microedition.khronos.opengles.GL10;
  */
 
 class MyRenderer implements GLSurfaceView.Renderer {
-    // Initialize our square.
-    Square square = new Square();
+    private Square square = new Square();
+    private Cube cube = new Cube();
+
+    public MyRenderer() {
+//        this(null);
+    }
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -57,6 +61,7 @@ class MyRenderer implements GLSurfaceView.Renderer {
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
         gl.glTranslatef(0, 0, -4);
-        square.draw(gl);
+//        square.draw(gl);
+        cube.draw(gl);
     }
 }
