@@ -18,6 +18,11 @@ public class MyClass implements interfaceB, interfaceA {
         return 0;
     }
 
+    @Override
+    public int sub(String i) {
+        return 0;
+    }
+
     public static void main(String[] args) {
         classB b = new classB(1);
         System.out.println(b.i);

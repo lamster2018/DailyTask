@@ -32,7 +32,7 @@ public class classB extends classA {
     // 父类非静态代码块 -》父类构造器 -》
     // 子类非静态代码块 -》子类构造器
 
-    //如果父类没有特别写明 默认构造器，那么父类静态代码块不执行，
+    //如果父类   没有显示写默认构造器，那么父类静态代码块不执行，但是非静态的代码块执行
     static {
         System.out.println(classB.i);
         System.out.println("x");
