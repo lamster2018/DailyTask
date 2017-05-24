@@ -47,6 +47,7 @@
             </intent-filter>
         </service>
         <service android:name=".Service.MyBindService" />
+        <service android:name=".Application.InitializeService" />
 
     </application>
 

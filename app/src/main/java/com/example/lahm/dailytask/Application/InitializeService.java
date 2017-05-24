@@ -3,7 +3,9 @@ package com.example.lahm.dailytask.Application;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * Project Name:DailyTask
@@ -20,6 +22,10 @@ import android.support.annotation.Nullable;
 public class InitializeService extends IntentService {
     public static final String ACTION_INIT_WHEN_APP_CREATE = "com.example.lahm.dailytask.Application.INIT";
 
+    public InitializeService() {
+        super("InitializeService");
+    }
+
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
      * 父类是个抽象类，必须通过继承实现，不能直接new；
@@ -29,6 +35,7 @@ public class InitializeService extends IntentService {
      *
      * @param name Used to name the worker thread, important only for debugging.
      */
+
     public InitializeService(String name) {
         super(name);
     }
@@ -38,6 +45,38 @@ public class InitializeService extends IntentService {
         Intent intent = new Intent(context, InitializeService.class);
         intent.setAction(action);
         context.startService(intent);
+    }
+
+    String TAG = "service";
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.i(TAG, "onCreate: ");
+    }
+
+    @Override
+    public void onStart(@Nullable Intent intent, int startId) {
+        super.onStart(intent, startId);
+        Log.i(TAG, "onStart: ");
+    }
+
+    @Override
+    public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
+        Log.i(TAG, "onStartCommand: ");
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy: ");
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return super.onBind(intent);
     }
 
     @Override
