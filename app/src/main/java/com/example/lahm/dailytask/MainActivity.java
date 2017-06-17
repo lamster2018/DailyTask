@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.lahm.dailytask.File.FileActivity;
 import com.example.lahm.dailytask.OpenGL.TestOpenGLActivity;
+import com.example.lahm.dailytask.RecyclerView.RecyclerViewActivity;
 import com.example.lahm.dailytask.Reflection.ReflectionActivity;
 import com.example.lahm.dailytask.Service.ServiceActivity;
 import com.example.lahm.dailytask.Thread.ThreadActivity;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        setListener(R.id.recycler_btn, RecyclerViewActivity.class);
         setListener(R.id.thread_btn, ThreadActivity.class);
         setListener(R.id.file_btn, FileActivity.class);
         setListener(R.id.reflection_btn, ReflectionActivity.class);
