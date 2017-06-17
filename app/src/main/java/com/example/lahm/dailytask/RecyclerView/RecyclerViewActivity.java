@@ -12,7 +12,6 @@ import com.example.lahm.dailytask.R;
  * Package Name:com.example.lahm.dailytask.RecyclerView
  * Created by lahm on 2017/5/24 下午10:14 .
  * <p>
- * Copyright (c) 2016—2017 https://www.lizhiweike.com all rights reserved.
  */
 
 public class RecyclerViewActivity extends BaseActivity {
