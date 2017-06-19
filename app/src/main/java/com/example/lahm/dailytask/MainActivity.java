@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        setListener(R.id.hook_btn, HookActivity.class);
         setListener(R.id.recycler_btn, RecyclerViewActivity.class);
         setListener(R.id.thread_btn, ThreadActivity.class);
         setListener(R.id.file_btn, FileActivity.class);

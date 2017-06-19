@@ -18,6 +18,12 @@
             android:textColor="#000" />
 
         <Button
+            android:id="@+id/hook_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="hook" />
+
+        <Button
             android:id="@+id/recycler_btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
