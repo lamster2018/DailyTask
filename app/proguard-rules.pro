@@ -1,6 +1,6 @@
 # Add project specific ProGuard rules here.
 # By default, the flags in this file are appended to flags specified
-# in /Users/lahm/Library/Android/sdk/tools/proguard/proguard-android.txt
+# in D:\Android\sdk/tools/proguard/proguard-android.txt
 # You can edit the include path and order by changing the proguardFiles
 # directive in build.gradle.
 #
@@ -14,4 +14,152 @@
 # class:
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
+#}
+-dontskipnonpubliclibraryclasses # 不忽略非公共的库类
+-optimizationpasses 5            # 指定代码的压缩级别
+-dontusemixedcaseclassnames      # 是否使用大小写混合
+-dontpreverify                   # 混淆时是否做预校验
+-verbose                         # 混淆时是否记录日志
+-keepattributes *Annotation*     # 保持注解
+-ignorewarning                   # 忽略警告
+-dontoptimize                    # 优化不优化输入的类文件
+
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*  # 混淆时所采用的算法
+
+#保持哪些类不被混淆
+#-keep public class * extends android.app.Activity
+#-keep public class * extends android.app.Application
+#-keep public class * extends android.app.Service
+#-keep public class * extends android.content.BroadcastReceiver
+#-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+-keep public class com.android.vending.licensing.ILicensingService
+
+#生成日志数据，gradle build时在本项目根目录输出
+-dump class_files.txt            #apk包内所有class的内部结构
+-printseeds seeds.txt            #未混淆的类和成员
+-printusage unused.txt           #打印未被使用的代码
+-printmapping mapping.txt        #混淆前后的映射
+
+-keep class android.support.** #如果有引用v4或者v7包，需添加
+-keep class * extends android.support.** #如果有引用v4或者v7包，需添加
+-dontwarn android.support.**              #忽略某个包的警告
+#-libraryjars libs/xxx.jar        #混淆第三方jar包，其中xxx为jar包名
+#-keep class com.xxx.**{*;}       #不混淆某个包内的所有文件
+-keepattributes Signature        #不混淆泛型
+
+-keep public class com.lizhiweike.R$*{ #不混淆资源类
+public static final int *;
+}
+-keep class * implements android.os.Parcelable {         # 保持 Parcelable 不被混淆
+    public static final android.os.Parcelable$Creator *;
+}
+-keepnames class * implements java.io.Serializable #不混淆Serializable
+
+-keepclasseswithmembernames class * {  # 保持 native 方法不被混淆
+    native <methods>;
+}
+-keepclasseswithmembers class * {      # 保持自定义控件类不被混淆
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+-keepclasseswithmembers class * {      # 保持自定义控件类不被混淆
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+-keepclassmembers class * extends android.app.Activity { # 保持自定义控件类不被混淆
+    public void *(android.view.View);
+}
+-keepclassmembers enum * {             # 保持枚举 enum 类不被混淆
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+#使用gson进行解析json数据时，创建的实体类及其引用不能混淆，如果混淆就解析出问题；
+-keep class **.model.**{*;}
+#----------常见的库混淆规则--------------------------
+
+##---------------facebook fresco------------------
+## Keep our interfaces so they can be used by other ProGuard rules.
+## See http://sourceforge.net/p/proguard/bugs/466/
+#-keep,allowobfuscation @interface com.facebook.common.internal.DoNotStrip
+#
+## Do not strip any method/class that is annotated with @DoNotStrip
+#-keep @com.facebook.common.internal.DoNotStrip class *
+#-keepclassmembers class * {
+#    @com.facebook.common.internal.DoNotStrip *;
+#}
+#
+## Keep native methods
+#-keepclassmembers class * {
+#    native <methods>;
+#}
+#-dontwarn javax.annotation.**
+#-dontwarn com.android.volley.toolbox.**
+##----------------------okhttp---------------------------
+#-dontwarn okio.**
+#-dontwarn javax.annotation.Nullable
+#-dontwarn javax.annotation.ParametersAreNonnullByDefault
+##------------------------retrofit----------------
+#-dontwarn okio.**
+#-dontwarn javax.annotation.**
+##------------------------rxjava----------------
+#-dontwarn sun.misc.**
+#-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+# long producerIndex;
+# long consumerIndex;
+#}
+#-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+# rx.internal.util.atomic.LinkedQueueNode producerNode;
+#}
+#-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+# rx.internal.util.atomic.LinkedQueueNode consumerNode;
+#}
+##-----------------------umeng analysis-----------------------------
+#-keepclassmembers class * {
+#   public <init> (org.json.JSONObject);
+#}
+##-----------------------bugly---------------------------------
+#-dontwarn com.tencent.bugly.**
+#-keep public class com.tencent.bugly.**{*;}
+#
+#-keepattributes EnclosingMethod
+##------------------#BaseRecyclerViewAdapterHelper-----------------
+#-keep class com.chad.library.adapter.** {*;}
+##--------------------------jpush----------------------------------------
+#-dontoptimize
+#-dontpreverify
+#-dontwarn cn.jpush.**
+#-keep class cn.jpush.** { *; }
+#
+#-dontwarn cn.jiguang.**
+#-keep class cn.jiguang.** { *; }
+#-dontwarn com.google.**
+#-keep class com.google.gson.** {*;}
+#-keep class com.google.protobuf.** {*;}
+#
+##-------------------------shareSDK---------------------------
+#-keep class cn.sharesdk.**{*;}
+#-keep class com.sina.**{*;}
+#-keep class **.R$* {*;}
+#-keep class **.R{*;}
+#-keep class com.mob.**{*;}
+#-dontwarn com.mob.**
+#-dontwarn cn.sharesdk.**
+#-dontwarn **.R$*
+##------------------wx pay ---------------------------
+#-dontwarn com.lizhiweike.wxapi.**
+#-keep class com.lizhiweike.wxapi.** {*;}
+#-keep class com.tencent.mm.opensdk.** {
+#   *;
+#}
+#-keep class com.tencent.wxop.** {
+#   *;
+#}
+#-keep class com.tencent.mm.sdk.** {
+#   *;
+#}
+##----------------other------------------------
+#-dontwarn org.apache.http.**
+##-----------------iosocket---------------------
+#-keep class io.socket.** {
+#    *;
 #}
