@@ -163,3 +163,7 @@ public static final int *;
 #-keep class io.socket.** {
 #    *;
 #}
+#------------- Parceler library----------
+-keep interface org.parceler.Parcel
+-keep @org.parceler.Parcel class * { *; }
+-keep class **$$Parcelable { *; }

@@ -77,7 +77,9 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.5.0'
     compile 'com.squareup.haha:haha:2.0.3'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.13'
-
+    //parceler
+    compile 'org.parceler:parceler-api:1.1.8'
+    annotationProcessor 'org.parceler:parceler:1.1.8'
 }
 
 andResGuard {
