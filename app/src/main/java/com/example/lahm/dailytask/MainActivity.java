@@ -1,12 +1,15 @@
 package com.example.lahm.dailytask;
 
+import android.app.KeyguardManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,10 +20,14 @@ import com.example.lahm.dailytask.Reflection.ReflectionActivity;
 import com.example.lahm.dailytask.Service.ServiceActivity;
 import com.example.lahm.dailytask.Thread.ThreadActivity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * https://github.com/lamster2018
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+    private KeyguardManager keyguardManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +42,34 @@ public class MainActivity extends AppCompatActivity {
                 activation();
             }
         });
+        keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+        timer.schedule(timerTask, 1000, 2000);
     }
+
+    public Timer timer = new Timer();
+    TimerTask timerTask = new TimerTask() {
+        @Override
+        public void run() {
+            //如果是锁屏状态下
+            if (keyguardManager.inKeyguardRestrictedInputMode()) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("http://www.baidu.com"));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Log.i("ceshi", "run: ---");
+                startActivity(intent);
+            } else {
+//                Intent intent = new Intent();
+//                intent.setAction(Intent.ACTION_MAIN);
+//                intent.addCategory(Intent.CATEGORY_HOME);
+//                intent.addCategory(Intent.CATEGORY_DEFAULT);
+//                intent.setData(Uri.parse("http://www.lizhiweike.com"));
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
+            }
+        }
+    };
 
     // 激活设备超级管理员
     public void activation() {

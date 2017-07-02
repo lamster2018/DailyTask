@@ -7,8 +7,6 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.example.lahm.dailytask.Util.CrashUtil;
-
 /**
  * Project Name:DailyTask
  * Package Name:com.example.lahm.dailytask.Application
@@ -96,7 +94,7 @@ public class InitializeService extends IntentService {
     }
 
     private void performInit() {
-        CrashUtil.getInstance().init(getApplicationContext());
+//        CrashUtil.getInstance().init(getApplicationContext());
         // init crash helper
 //        CrashHelper.init(this.getApplicationContext());
 
