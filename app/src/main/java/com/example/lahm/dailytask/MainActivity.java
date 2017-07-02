@@ -1,12 +1,13 @@
 package com.example.lahm.dailytask;
 
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.lahm.dailytask.File.FileActivity;
@@ -16,6 +17,9 @@ import com.example.lahm.dailytask.Reflection.ReflectionActivity;
 import com.example.lahm.dailytask.Service.ServiceActivity;
 import com.example.lahm.dailytask.Thread.ThreadActivity;
 
+/**
+ * https://github.com/lamster2018
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -25,6 +29,22 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.channel);
         textView.setText(getApplicationMetaValue("CHANNEL"));
         initView();
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activation();
+            }
+        });
+    }
+
+    // 激活设备超级管理员
+    public void activation() {
+        Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+        // 初始化要激活的组件
+        ComponentName mDeviceAdminSample = new ComponentName(MainActivity.this, MyDeviceAdminReceiver.class);
+        intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, mDeviceAdminSample);
+        intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "激活可以防止随意卸载应用");
+        startActivity(intent);
     }
 
     /**

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DailyTask</string>
     <string name="title_activity_memory_leak">MemoryLeakActivity</string>
+    <string name="description">防止应用被卸载搞事</string>
 </resources>

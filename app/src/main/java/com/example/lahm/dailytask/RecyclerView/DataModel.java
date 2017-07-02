@@ -5,8 +5,9 @@ package com.example.lahm.dailytask.RecyclerView;
  * Package Name:com.example.lahm.dailytask.RecyclerView
  * Created by lahm on 2017/6/24 上午8:21 .
  * <p>
- * Copyright (c) 2016—2017 https://www.lizhiweike.com all rights reserved.
+ * https://github.com/lamster2018
  */
+
 
 import org.parceler.Parcel;
 import org.parceler.ParcelFactory;

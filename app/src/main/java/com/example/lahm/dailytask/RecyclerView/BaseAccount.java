@@ -5,7 +5,7 @@ package com.example.lahm.dailytask.RecyclerView;
  * Package Name:com.example.lahm.dailytask.RecyclerView
  * Created by lahm on 2017/6/24 上午8:24 .
  * <p>
- * Copyright (c) 2016—2017 https://www.lizhiweike.com all rights reserved.
+ * https://github.com/lamster2018
  */
 
 import org.parceler.Parcel;
@@ -13,8 +13,8 @@ import org.parceler.ParcelFactory;
 
 @Parcel
 public class BaseAccount {
-    private String name;
-    private int id;
+    public String name;
+    public int id;
 
     @ParcelFactory
     public static BaseAccount create(String name, int id) {

@@ -50,6 +50,19 @@
         <service android:name=".Service.MyBindService" />
         <service android:name=".Application.InitializeService" />
 
+        <receiver
+            android:name=".MyDeviceAdminReceiver"
+            android:description="@string/description"
+            android:label="防卸载"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/devicedadmin" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
