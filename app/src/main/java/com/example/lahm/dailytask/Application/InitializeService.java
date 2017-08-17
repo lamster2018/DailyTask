@@ -3,9 +3,12 @@ package com.example.lahm.dailytask.Application;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
+
+import com.example.lahm.dailytask.Util.QRCodeUtil;
 
 /**
  * Project Name:DailyTask
@@ -20,12 +23,18 @@ import android.util.Log;
  */
 
 public class InitializeService extends IntentService {
-    public static final String ACTION_INIT_WHEN_APP_CREATE = "com.example.lahm.dailytask.Application.INIT";
+
+    public static final String ACTION_INIT_WHEN_APP_CREATE = "com.dailyTask.application.init";
+    public static final String ACTION_DOWNLOAD_ADS_IMAGE = "com.dailyTask.download.ads.image";
+    public static final String ACTION_DOWNLOAD_IMAGE = "com.dailyTask.download.image";
+    public static final String ACTION_GENERATE_QR_CODE = "com.dailyTask.generate.qrcode";
+    public static final String ACTION_INIT_APP_SETTING = "com.dailyTask.app.setting.init";
+
+    private String TAG = "intentService";
 
     public InitializeService() {
         super("InitializeService");
     }
-
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
      * 父类是个抽象类，必须通过继承实现，不能直接new；
@@ -47,7 +56,15 @@ public class InitializeService extends IntentService {
         context.startService(intent);
     }
 
-    String TAG = "service";
+    public static void generateQRCode(Context context, String content, int widthPix, int heightPix, Bitmap logoBm, String filePath) {
+        Intent intent = new Intent(context, InitializeService.class);
+        intent.putExtra("content", content);
+        intent.putExtra("widthPix", widthPix);
+        intent.putExtra("heightPix", heightPix);
+        intent.putExtra("filePath", filePath);
+        intent.setAction(ACTION_GENERATE_QR_CODE);
+        context.startService(intent);
+    }
 
     @Override
     public void onCreate() {
@@ -87,6 +104,19 @@ public class InitializeService extends IntentService {
                 case ACTION_INIT_WHEN_APP_CREATE:
                     performInit();
                     break;
+                case ACTION_GENERATE_QR_CODE:
+                    String content = intent.getStringExtra("content");
+                    int widthPix = intent.getIntExtra("widthPix", 600);
+                    int heightPix = intent.getIntExtra("heightPix", 600);
+                    String qrFilePath = intent.getStringExtra("filePath");
+                    boolean success = QRCodeUtil.createQRImage(content, widthPix, heightPix, null,
+//                            BitmapFactory.decodeResource(getResources(), R.drawable.logo_qr_code),
+                            qrFilePath);
+//                    if (success)
+//                        EventBus.getDefault().post(new MainThreadEvent<>(MainThreadEvent.GENERATE_QRCODE_SUCCESS, "file://" + qrFilePath));
+//                    else
+//                        EventBus.getDefault().post(new MainThreadEvent<>(MainThreadEvent.DOWNLOAD_FILE_FAILED, null));
+                    break;
                 default:
                     break;
             }
@@ -107,4 +137,6 @@ public class InitializeService extends IntentService {
         // init Share
 //        SharePlatform.init(this.getApplicationContext());
     }
+
+
 }
