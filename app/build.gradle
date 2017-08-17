@@ -81,6 +81,8 @@ dependencies {
     annotationProcessor 'org.parceler:parceler:1.1.8'
     //zxing qr code
     compile files('src/libs/core-3.3.0.jar')
+    //eventbus
+    compile 'org.greenrobot:eventbus:3.0.0'
 }
 
 andResGuard {
