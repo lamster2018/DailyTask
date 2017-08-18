@@ -42,3 +42,4 @@ gradlew
 gradlew.bat
 captures/
 bugly
+app/.externalNativeBuild/
