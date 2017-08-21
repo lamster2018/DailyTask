@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -43,7 +42,7 @@ public class MainActivity extends BaseActivity {
             }
         });
         keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
-        timer.schedule(timerTask, 1000, 2000);
+//        timer.schedule(timerTask, 1000, 2000);
     }
 
     public Timer timer = new Timer();
@@ -57,7 +56,6 @@ public class MainActivity extends BaseActivity {
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
                 intent.setData(Uri.parse("http://www.baidu.com"));
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Log.i("ceshi", "run: ---");
                 startActivity(intent);
             } else {
 //                Intent intent = new Intent();
@@ -115,6 +113,7 @@ public class MainActivity extends BaseActivity {
         setListener(R.id.ndk_btn, NDKActivity.class);
         setListener(R.id.service_btn, ServiceActivity.class);
         setListener(R.id.test_openGl_btn, TestOpenGLActivity.class);
+        setListener(R.id.image_btn, ImageActivity.class);
     }
 
     private String getApplicationMetaValue(String name) {

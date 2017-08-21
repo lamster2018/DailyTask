@@ -16,7 +16,8 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <!--<activity android:name=".MVP.view.UserLoginActivity">-->
+
+            <!-- <activity android:name=".MVP.view.UserLoginActivity"> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,6 +64,8 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".ImageActivity"></activity>
     </application>
 
 </manifest>
