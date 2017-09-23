@@ -38,7 +38,9 @@
         <activity android:name=".MVP.view.UserLoginActivity" />
         <activity android:name=".OpenGL.TestOpenGLActivity" />
         <activity android:name=".HookActivity" />
-        <activity android:name=".ImageActivity" />
+        <activity
+            android:name=".ImageActivity"
+            android:theme="@style/AppTheme.Image" />
 
         <meta-data
             android:name="CHANNEL"
