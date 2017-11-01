@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.lahm.dailytask.File.FileActivity;
@@ -18,6 +20,11 @@ import com.example.lahm.dailytask.RecyclerView.RecyclerViewActivity;
 import com.example.lahm.dailytask.Reflection.ReflectionActivity;
 import com.example.lahm.dailytask.Service.ServiceActivity;
 import com.example.lahm.dailytask.Thread.ThreadActivity;
+import com.example.lahm.dailytask.daemon.jobScheduler.JobSchedulerManager;
+import com.example.lahm.dailytask.daemon.screen.ScreenManager;
+import com.example.lahm.dailytask.daemon.screen.ScreenReceiverUtil;
+import com.example.lahm.dailytask.daemon.service.DaemonService;
+import com.example.lahm.dailytask.daemon.service.PlayerMusicService;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -32,7 +39,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView textView = (TextView) findViewById(R.id.channel);
+        TextView textView = findViewById(R.id.channel);
         textView.setText(getApplicationMetaValue("CHANNEL"));
         initView();
         textView.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +50,81 @@ public class MainActivity extends BaseActivity {
         });
         keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
 //        timer.schedule(timerTask, 1000, 2000);
+
+        final Button daemonBtn = findViewById(R.id.daemon_btn);
+        daemonBtn.setText(daemonBtn.isSelected() ? "stop daemon" : "start daemon");
+        daemonBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (daemonBtn.isSelected()) {
+                    stopDaemon();
+                    daemonBtn.setText("start daemon");
+                } else {
+                    initDaemon();
+                    daemonBtn.setText("stop daemon");
+                }
+            }
+        });
     }
+
+    // 动态注册锁屏等广播
+    private ScreenReceiverUtil mScreenReceiverUtil;
+    // 1像素Activity管理类
+    private ScreenManager mScreenManager;
+    // JobService，执行系统任务
+    private JobSchedulerManager mJobManager;
+
+    private void initDaemon() {
+        mScreenReceiverUtil = new ScreenReceiverUtil(this);
+        mScreenReceiverUtil.setScreenReceiverListener(mScreenListener);
+        mScreenManager = ScreenManager.getScreenManagerInstance(this);
+
+        Intent intent = new Intent(MainActivity.this, DaemonService.class);
+        startService(intent);
+
+        Intent musicIntent = new Intent(MainActivity.this, PlayerMusicService.class);
+        stopService(musicIntent);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mJobManager = new JobSchedulerManager(this);
+            mJobManager.startJobScheduler();
+        }
+    }
+
+    private void stopDaemon() {
+        mScreenReceiverUtil.stopScreenReceiverListener();
+        Intent intent = new Intent(MainActivity.this, DaemonService.class);
+        stopService(intent);
+
+        Intent musicIntent = new Intent(MainActivity.this, PlayerMusicService.class);
+        stopService(musicIntent);
+
+        if (mJobManager != null) mJobManager.stopJobScheduler();
+    }
+
+    private ScreenReceiverUtil.ScreenStateListener mScreenListener = new ScreenReceiverUtil.ScreenStateListener() {
+        @Override
+        public void onScreenOn() {
+            // 亮屏，移除"1像素"
+            mScreenManager.finishActivity();
+        }
+
+        @Override
+        public void onScreenOff() {
+            // 接到锁屏广播，将MainActivity切换到可见模式
+            // "咕咚"、"乐动力"、"悦动圈"就是这么做滴
+//            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+//            startActivity(intent);
+            // 如果你觉得，MainActivity
+            // 那么，我们就制造个"1像素"惨案
+            mScreenManager.startActivity();
+        }
+
+        @Override
+        public void onUserPresent() {
+            // 解锁，暂不用，保留
+        }
+    };
 
     public Timer timer = new Timer();
     TimerTask timerTask = new TimerTask() {

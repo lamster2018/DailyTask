@@ -105,5 +105,10 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="image" />
+
+        <Button
+            android:id="@+id/daemon_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
     </LinearLayout>
 </ScrollView>
