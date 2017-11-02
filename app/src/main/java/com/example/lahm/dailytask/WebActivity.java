@@ -4,12 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Process;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
@@ -18,10 +18,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
-
-import com.example.lahm.dailytask.Singleton.HungrySingle;
-import com.example.lahm.dailytask.Singleton.LazySingle;
-import com.example.lahm.dailytask.Singleton.SingleDog;
 
 public class WebActivity extends AppCompatActivity {
     private String TAG = "xxxxx";
@@ -35,7 +31,7 @@ public class WebActivity extends AppCompatActivity {
         rootView = (RelativeLayout) findViewById(R.id.activity_web);
         webView = new WebView(getApplicationContext());
         initWebView();
-        webView.loadUrl("https://www.sina.com");
+        webView.loadUrl("https://www.baidu.com");
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(-1, -1);
         rootView.addView(webView, lp);
     }
@@ -54,7 +50,13 @@ public class WebActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         rootView.removeView(webView);
+        webView.loadUrl("about:blank");
+        webView.clearFormData();
+        webView.clearHistory();
         webView.destroy();
+        //在清单中把web启动在另一个进程，但是要考虑之间的值传递，
+        // eventBus无法在多进程中传递，有饿了么的hermesEventBus
+        Process.killProcess(Process.myPid());
         super.onDestroy();
     }
 

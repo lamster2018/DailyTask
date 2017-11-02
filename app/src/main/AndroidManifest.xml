@@ -32,7 +32,9 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".ScreenActivity" />
         <activity android:name=".LifeCircleActivity" />
-        <activity android:name=".WebActivity" />
+        <activity
+            android:name=".WebActivity"
+            android:process=":browser" />
         <activity android:name=".MemoryLeakActivity" />
         <activity android:name=".NDKActivity" />
         <activity android:name=".Service.ServiceActivity" />
