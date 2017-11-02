@@ -13,6 +13,9 @@ import com.example.lahm.dailytask.R;
 /**
  * Project Name:android
  * Created by lahm on 2017/10/31 16:37 .
+ * 双进程保活策略，通过开启一个可见的通知栏降低oom_adj
+ * 然后再把这个通知栏干掉，oom_adj不变，
+ * 但是7.0+没用，杀的是一整个进程租
  */
 public class DaemonService extends Service {
     public static final int NOTICE_ID = 100;

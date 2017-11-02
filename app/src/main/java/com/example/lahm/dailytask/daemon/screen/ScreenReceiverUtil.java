@@ -10,6 +10,9 @@ import android.util.Log;
  * Project Name:android
  * Created by lahm on 2017/10/31 17:00 .
  * <p>
+ * 动态注册屏幕开关的广播
+ * 然后在锁屏的时候调起一个1像素的前台activity
+ * 这样做到降低oom_adj
  */
 public class ScreenReceiverUtil {
     private Context mContext;

@@ -12,8 +12,8 @@ import com.example.lahm.dailytask.R;
  * Project Name:Dailytask
  * Package Name:com.example.lahm.dailytask.daemon.service
  * Created by lahm on 2017/11/2 上午12:09 .
- * <p>
- * Copyright (c) 2016—2017 https://www.lizhiweike.com all rights reserved.
+ * 开启一个播放静默音乐的service，类似音乐播放器，lmk除非在紧急情况才会杀
+ * 但是抗不过7.0+的一键杀，和厂商的一键杀
  */
 
 public class PlayerMusicService extends Service {

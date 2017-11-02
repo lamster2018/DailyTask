@@ -16,6 +16,7 @@ import com.example.lahm.dailytask.daemon.DaemonUtil;
  * Project Name:android
  * Created by lahm on 2017/11/1 10:19 .
  * <p>
+ * 任务调度，不是保活，而是复活策略
  */
 @TargetApi(21)
 public class AliveJobService extends JobService {

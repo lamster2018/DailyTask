@@ -12,7 +12,6 @@ import java.lang.ref.WeakReference;
  * <p>
  */
 public class ScreenManager {
-    private static final String TAG = "ScreenManager";
     private Context mContext;
     private static ScreenManager mScreenManager;
     // 使用弱引用，防止内存泄漏c

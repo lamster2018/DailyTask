@@ -15,6 +15,7 @@ import com.example.lahm.dailytask.R;
  * Project Name:android
  * Created by lahm on 2017/10/31 16:44 .
  * <p>
+ * 单纯的开一个service把notification干掉
  */
 public class CancelNoticeService extends Service {
     @Nullable
