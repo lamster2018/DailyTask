@@ -24,6 +24,7 @@ import com.example.lahm.dailytask.daemon.screen.ScreenManager;
 import com.example.lahm.dailytask.daemon.screen.ScreenReceiverUtil;
 import com.example.lahm.dailytask.daemon.service.DaemonService;
 import com.example.lahm.dailytask.daemon.service.PlayerMusicService;
+import com.example.lahm.dailytask.netspeed.NetSpeedTestActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -195,6 +196,7 @@ public class MainActivity extends BaseActivity {
         setListener(R.id.service_btn, ServiceActivity.class);
         setListener(R.id.test_openGl_btn, TestOpenGLActivity.class);
         setListener(R.id.image_btn, ImageActivity.class);
+        setListener(R.id.net_speed, NetSpeedTestActivity.class);
     }
 
     private String getApplicationMetaValue(String name) {

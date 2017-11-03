@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="50dp">
+
+    <TextView
+        android:id="@+id/tv__debug_net_model"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="当前链接模式"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tv_debug_net_speed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="当期网络状态"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tv_debug_net_width"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="当期带宽"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tv_debug_total_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="当期带宽"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/bt_debug_start_test_net"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="开始测速" />
+
+    <ProgressBar
+        android:id="@+id/runningBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+        android:layout_marginTop="15dp"
+        android:visibility="gone" />
+</LinearLayout>
