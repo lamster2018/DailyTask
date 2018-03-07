@@ -3,7 +3,7 @@ apply plugin: 'AndResGuard'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion "26.0.3"
     defaultConfig {
         applicationId "com.example.lahm.dailytask"
         minSdkVersion 16
@@ -11,21 +11,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        externalNativeBuild {
-            cmake {
-                cppFlags "-frtti -fexceptions"
-            }
-        }
         ndk {
             // Specifies the ABI configurations of your native
             // libraries Gradle should build and package with your APK.
-            abiFilters 'x86', 'x86_64', 'armeabi', 'armeabi-v7a',
-                    'arm64-v8a'
-        }
-    }
-    externalNativeBuild {
-        cmake {
-            path 'CMakeLists.txt'
+            abiFilters 'x86', 'armeabi', 'armeabi-v7a'//, 'x86_64', 'arm64-v8a'
         }
     }
     signingConfigs {
@@ -41,6 +30,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release//release 指定签名
+        }
+    }
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            res.srcDirs = ['src/main/res']
+            jniLibs.srcDirs = ['src/libs']
         }
     }
     productFlavors {//一键渠道

@@ -37,7 +37,7 @@
             android:name=".WebActivity"
             android:process=":browser" />
         <activity android:name=".MemoryLeakActivity" />
-        <activity android:name=".NDKActivity" />
+        <activity android:name=".NDK.NDKActivity" />
         <activity android:name=".Service.ServiceActivity" />
         <activity android:name=".MVP.view.UserLoginActivity" />
         <activity android:name=".OpenGL.TestOpenGLActivity" />

@@ -4,10 +4,12 @@
     android:id="@+id/activity_ndk"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lahm.dailytask.NDKActivity">
+    tools:context="com.example.lahm.dailytask.NDK.NDKActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="see this means u r safe" />
 </RelativeLayout>
