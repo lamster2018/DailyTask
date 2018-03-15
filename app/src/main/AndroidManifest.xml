@@ -41,7 +41,7 @@
         <activity android:name=".Service.ServiceActivity" />
         <activity android:name=".MVP.view.UserLoginActivity" />
         <activity android:name=".OpenGL.TestOpenGLActivity" />
-        <activity android:name=".HookActivity" />
+        <activity android:name=".Hook.HookActivity" />
         <activity
             android:name=".ImageActivity"
             android:theme="@style/AppTheme.Image" />
@@ -81,6 +81,7 @@
             android:launchMode="singleInstance"
             android:theme="@style/SingleActivityStyle" />
         <activity android:name=".netspeed.NetSpeedTestActivity" />
+        <activity android:name=".Hook.ProxyActivity" />
 
         <service
             android:name=".daemon.service.DaemonService"

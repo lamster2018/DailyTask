@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.lahm.dailytask.File.FileActivity;
+import com.example.lahm.dailytask.Hook.HookActivity;
 import com.example.lahm.dailytask.NDK.NDKActivity;
 import com.example.lahm.dailytask.OpenGL.TestOpenGLActivity;
 import com.example.lahm.dailytask.Reflection.ReflectionActivity;

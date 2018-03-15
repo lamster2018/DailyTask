@@ -1,12 +1,17 @@
-package com.example.lahm.dailytask;
+package com.example.lahm.dailytask.Hook;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
+
+import com.example.lahm.dailytask.BaseActivity;
+import com.example.lahm.dailytask.R;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
@@ -20,7 +25,7 @@ import java.util.Map;
  * Package Name:com.example.lahm.dailytask
  * Created by lahm on 2017/6/18 下午7:14 .
  * <p>
- * http://www.wjdiankong.cn/android%E7%B3%BB%E7%BB%9F%E7%AF%87%E4%B9%8B-%E5%85%8Droot%E5%AE%9E%E7%8E%B0hook%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E6%8B%A6%E6%88%AA%E6%96%B9%E6%B3%95/
+ * https://www.jianshu.com/p/69bfbda302df
  */
 
 public class HookActivity extends BaseActivity {
@@ -38,6 +43,19 @@ public class HookActivity extends BaseActivity {
         ClipData clipData = cm.getPrimaryClip();
         String msg = clipData.getItemAt(0).getText().toString();
         Log.i(TAG, "onCreate-----: " + msg);
+
+
+        HookUtil hookUtil = new HookUtil(ProxyActivity.class, this);
+        hookUtil.hookSystemHandler();
+        hookUtil.hookAms();
+
+
+        findViewById(R.id.jump).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HookActivity.this, TargetActivity.class));
+            }
+        });
     }
 
     @Override
